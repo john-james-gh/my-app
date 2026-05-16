@@ -15,7 +15,7 @@ export default function Home() {
             </p>
           </div>
           <Link
-            href="/character/us/area-52/thunderguy"
+            href="/character/us/stormrage/aurafarms"
             className="hidden rounded-md border border-[rgba(241,207,122,0.28)] bg-[#11100d]/80 px-3 py-2 text-sm font-bold text-[#f4e2b9] transition hover:border-[#f1cf7a] hover:text-white sm:inline-flex"
           >
             View sample
@@ -43,9 +43,9 @@ export default function Home() {
 
             <div className="mt-8 grid max-w-2xl gap-3 sm:grid-cols-3">
               {[
-                ["84%", "readiness score"],
-                ["2", "missing enchants"],
-                ["3/4", "tier progress"],
+                ["100%", "sample readiness"],
+                ["0", "missing enchants"],
+                ["4/4", "tier progress"],
               ].map(([value, label]) => (
                 <div
                   key={label}

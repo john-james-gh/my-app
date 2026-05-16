@@ -27,39 +27,51 @@ export function IssueList({ issues }: { issues: ReadinessIssue[] }) {
         <p className="font-mono text-sm font-bold text-[#b9a98b]">{issues.length} issues</p>
       </div>
 
-      <div className="mt-4 grid gap-3">
-        {issues.map((issue) => (
-          <article
-            key={issue.id}
-            className="rounded-lg border border-[rgba(241,207,122,0.18)] bg-[#11100d]/82 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition hover:border-[rgba(241,207,122,0.42)]"
-          >
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span
-                    className={[
-                      "rounded-md border px-2 py-1 text-xs font-black uppercase tracking-[0.12em]",
-                      severityStyles[issue.severity],
-                    ].join(" ")}
-                  >
-                    {issue.severity}
-                  </span>
-                  <span className="font-mono text-sm font-bold uppercase tracking-[0.08em] text-[#b9a98b]">
-                    {categoryLabels[issue.category]}
-                    {issue.slot ? ` - ${issue.slot}` : ""}
-                  </span>
+      {issues.length > 0 ? (
+        <div className="mt-4 grid gap-3">
+          {issues.map((issue) => (
+            <article
+              key={issue.id}
+              className="rounded-lg border border-[rgba(241,207,122,0.18)] bg-[#11100d]/82 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition hover:border-[rgba(241,207,122,0.42)]"
+            >
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span
+                      className={[
+                        "rounded-md border px-2 py-1 text-xs font-black uppercase tracking-[0.12em]",
+                        severityStyles[issue.severity],
+                      ].join(" ")}
+                    >
+                      {issue.severity}
+                    </span>
+                    <span className="font-mono text-sm font-bold uppercase tracking-[0.08em] text-[#b9a98b]">
+                      {categoryLabels[issue.category]}
+                      {issue.slot ? ` - ${issue.slot}` : ""}
+                    </span>
+                  </div>
+                  <h3 className="font-display mt-3 text-xl font-black text-[#fff3d2]">
+                    {issue.title}
+                  </h3>
+                  <p className="mt-2 max-w-3xl text-base font-medium leading-6 text-[#d8c59c]">
+                    {issue.description}
+                  </p>
                 </div>
-                <h3 className="font-display mt-3 text-xl font-black text-[#fff3d2]">
-                  {issue.title}
-                </h3>
-                <p className="mt-2 max-w-3xl text-base font-medium leading-6 text-[#d8c59c]">
-                  {issue.description}
-                </p>
               </div>
-            </div>
-          </article>
-        ))}
-      </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-4 rounded-lg border border-[rgba(114,178,68,0.35)] bg-[#11100d]/82 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+          <p className="font-display text-xl font-black text-[#fff3d2]">
+            No setup issues found
+          </p>
+          <p className="mt-2 text-base font-medium leading-6 text-[#d8c59c]">
+            Battle.net shows filled sockets, expected enchants, and a ready tier
+            bonus.
+          </p>
+        </div>
+      )}
     </section>
   );
 }

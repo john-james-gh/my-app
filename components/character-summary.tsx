@@ -28,7 +28,7 @@ export function CharacterSummary({
         <p className="mt-1 text-lg font-black text-[#fff3d2]">
           {character.itemLevel}
         </p>
-        <p className="mt-1 text-sm font-medium text-[#d8c59c]">Mock data</p>
+        <p className="mt-1 text-sm font-medium text-[#d8c59c]">Equipped</p>
       </div>
     </section>
   );
