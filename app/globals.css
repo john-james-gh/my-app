@@ -1,26 +1,155 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #090806;
+  --foreground: #f7ecd2;
+  --iron: #11100d;
+  --iron-raised: #1c1712;
+  --ember: #b63b2b;
+  --ember-deep: #772219;
+  --gold: #d7a84a;
+  --gold-bright: #f1cf7a;
+  --fel: #72b244;
+  --parchment: #f4e2b9;
+  --muted: #b9a98b;
+  --line: rgba(241, 207, 122, 0.18);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-alegreya-sans);
+  --font-display: var(--font-cinzel);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(241, 207, 122, 0.35);
+  color: #fff8e8;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-alegreya-sans), Arial, Helvetica, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-cinzel), Georgia, serif;
+}
+
+.raid-shell {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(115deg, rgba(114, 178, 68, 0.08), transparent 34%),
+    linear-gradient(245deg, rgba(182, 59, 43, 0.13), transparent 39%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(241, 207, 122, 0.035) 0,
+      rgba(241, 207, 122, 0.035) 1px,
+      transparent 1px,
+      transparent 78px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(241, 207, 122, 0.025) 0,
+      rgba(241, 207, 122, 0.025) 1px,
+      transparent 1px,
+      transparent 78px
+    ),
+    #090806;
+}
+
+.raid-shell::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  opacity: 0.34;
+  background-image:
+    linear-gradient(45deg, transparent 48%, rgba(241, 207, 122, 0.18) 49%, rgba(241, 207, 122, 0.18) 51%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, rgba(114, 178, 68, 0.12) 49%, rgba(114, 178, 68, 0.12) 51%, transparent 52%);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent 68%);
+}
+
+.forged-panel {
+  position: relative;
+  border: 1px solid rgba(241, 207, 122, 0.22);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(28, 23, 18, 0.95), rgba(13, 11, 9, 0.96));
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.forged-panel::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 10px,
+      rgba(241, 207, 122, 0.035) 10px,
+      rgba(241, 207, 122, 0.035) 11px
+    );
+}
+
+.forged-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.etched-border {
+  border: 1px solid rgba(241, 207, 122, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.reveal-in {
+  animation: reveal-in 560ms ease-out both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 90ms;
+}
+
+.reveal-delay-2 {
+  animation-delay: 180ms;
+}
+
+.reveal-delay-3 {
+  animation-delay: 270ms;
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
 }
