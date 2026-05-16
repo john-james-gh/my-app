@@ -40,5 +40,9 @@ The Battle.net integration scaffold lives in `lib/battlenet`.
 - `client.ts`: profile/equipment API methods
 - `types.ts`: typed DTOs and expected-error results
 
-The UI still renders mock readiness data. The next step is to map real
-Battle.net equipment data into the readiness engine.
+The readiness normalization boundary lives in `lib/readiness/equipment.ts`.
+It maps raw Battle.net equipment payloads into the stable internal shape the
+readiness rules will use.
+
+The UI still renders mock readiness data. The next step is to implement the
+real gem, enchant, and tier-set readiness rules against normalized equipment.

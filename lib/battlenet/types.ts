@@ -98,6 +98,11 @@ export type BattleNetEquippedItem = {
 export type BattleNetCharacterEquipment = {
   character: BattleNetReference;
   equipped_items: BattleNetEquippedItem[];
+  equipped_item_sets?: Array<{
+    item_set: BattleNetReference;
+    items?: Array<BattleNetReference & { is_equipped?: boolean }>;
+    display_string?: string;
+  }>;
 };
 
 export type BattleNetCharacterData = {
